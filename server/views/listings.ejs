@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./../../stylesheets/style2.css">
+	<style>
+	    body { 
+	        background-image: url('http://o.homedsgn.com/wp-content/uploads/2013/05/Contemporary-Chic-01.jpg');
+	        background-repeat: no-repeat;
+	        background-attachment: fixed;
+	    }
+
+	    #list-img{
+	    	max-height: 200px;
+	    	min-height: 200px;
+	    }
+
+	    #gmap{
+	    	height: 300px;
+	    	width: 100%;
+	    }
+
+	    #filters{
+	    	height:100%;
+	    	background-color: #FBFBFB;	
+	    }
+
+	    #list_info{
+	    	display: inline-block;
+	    	vertical-align: top;
+	    	margin-left: 10px;
+	    	background-color: #FBFBFB;
+	    	opacity: 0.85;
+	    	width:100%;
+	    }
+
+	    #myCarousel{
+	    	display: inline-block;
+	    }
+	</style>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Room-Mating</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Search</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+          	<li><a href="/listing/:id">My Profile</a></li>
+            <li><a href="/listing/inbox">Inbox(4)</a></li>
+            <li><a href="/listing/logout">Log Out</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+	<div class="row">
+		<div class="col-md-2">
+			<ul class="list-group">
+			  <a href=""></a><li class="list-group-item">
+			    <span class="badge">14</span>
+			    Budget
+			  </li>
+			  <li class="list-group-item">
+			    <span class="badge">124</span>
+			    Bedrooms
+			  </li>
+			  <li class="list-group-item">
+			    <span class="badge">14</span>
+			    Bathrooms
+			  </li>
+			  <li class="list-group-item">
+			    <input type="checkbox"> No Room-Share
+			  </li>
+			</ul>
+		</div>
+		<div class="col-md-9 col-xs-12">
+			<div id = "gmap">
+				<div class="container" id="content">
+				<!-- Google Maps API -->
+				<script type="text/javascript"
+				      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKebFAfOKsa5FAhljjyM2iJPd4nF6eBmk">
+				    </script>
+				<div id="map-canvas"></div>
+				<script type="text/javascript">
+				    apts = [{"url": "http://sfbay.craigslist.org/pen/apa/4875366216.html", "lon": "-122.4158", "price": "22950", "idnum": "4875366216", "bed": "5", "bath": "5", "lat": "37.74299", "img_url": "http://images.craigslist.org/01111_cqqcUpwIdaZ_600x450.jpg", "sqft": "5200"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4874119660.html", "lon": "-122.420011", "price": "3390", "idnum": "4874119660", "bed": "1", "bath": "1", "lat": "37.756969", "img_url": "http://images.craigslist.org/00Z0Z_2htFLvk2vzH_600x450.jpg", "sqft": "517"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4882256776.html", "lon": "-122.423864", "price": "2400", "idnum": "4882256776", "bed": "1", "bath": "1", "lat": "37.738808", "img_url": "http://images.craigslist.org/00707_kLJB01xfUGA_600x450.jpg", "sqft": "480"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4874871222.html", "lon": "-122.416824", "price": "3000", "idnum": "4874871222", "bed": "1", "bath": "1", "lat": "37.734888", "img_url": "http://images.craigslist.org/00m0m_g3j8uiegSHp_600x450.jpg", "sqft": "850"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4848059114.html", "lon": "-122.420064", "price": "7250", "idnum": "4848059114", "bed": "4", "bath": "3", "lat": "37.738912", "img_url": "http://images.craigslist.org/00x0x_lWMyPrbvE9d_600x450.jpg", "sqft": "1900"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4881901502.html", "lon": "-122.408981", "price": "3990", "idnum": "4881901502", "bed": "2", "bath": "1", "lat": "37.75996", "img_url": "http://images.craigslist.org/00g0g_jB4jGbd4VYl_600x450.jpg", "sqft": "1000"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4877707319.html", "lon": "-122.423337", "price": "4450", "idnum": "4877707319", "bed": "3", "bath": "1", "lat": "37.742557", "img_url": "http://images.craigslist.org/01616_jVRAjp43wyR_600x450.jpg", "sqft": "1200"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4873991263.html", "lon": "-122.424103", "price": "4200", "idnum": "4873991263", "bed": "2", "bath": "1", "lat": "37.764783", "img_url": "http://images.craigslist.org/00V0V_dO3wNgFRyXd_600x450.jpg", "sqft": "1000"}, {"url": "http://sfbay.craigslist.org/pen/apa/4881696530.html", "lon": "-122.4158", "price": "4700", "idnum": "4881696530", "bed": "3", "bath": "2", "lat": "37.74299", "img_url": "http://images.craigslist.org/00A0A_4WMEbEVRbgx_600x450.jpg", "sqft": "1500"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4881634894.html", "lon": "-122.4148", "price": "3200", "idnum": "4881634894", "bed": "1", "bath": "1", "lat": "37.75986", "img_url": "http://images.craigslist.org/01616_3IOWLgnCdqR_600x450.jpg", "sqft": "750"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4849222087.html", "lon": "-122.423922", "price": "8300", "idnum": "4849222087", "bed": "4", "bath": "5", "lat": "37.762309", "img_url": "http://images.craigslist.org/00j0j_fz1eH2QJCuc_600x450.jpg", "sqft": "1800"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4881535564.html", "lon": "-122.425268", "price": "4195", "idnum": "4881535564", "bed": "1", "bath": "1", "lat": "37.762682", "img_url": "http://images.craigslist.org/00w0w_ajl9Cbe4J7Y_600x450.jpg", "sqft": "714"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4856462268.html", "lon": "-122.4153", "price": "7500", "idnum": "4856462268", "bed": "3", "bath": "5", "lat": "37.7509", "img_url": "http://images.craigslist.org/00303_lNjROPmzTV6_600x450.jpg", "sqft": "1500"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4881507985.html", "lon": "-122.416589", "price": "2295", "idnum": "4881507985", "bed": "0", "bath": "1", "lat": "37.755796", "img_url": "http://images.craigslist.org/00v0v_3Igy3Ih70RK_600x450.jpg", "sqft": "380"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4881487525.html", "lon": "-122.425268", "price": "4900", "idnum": "4881487525", "bed": "2", "bath": "2", "lat": "37.762682", "img_url": "http://images.craigslist.org/00w0w_ajl9Cbe4J7Y_600x450.jpg", "sqft": "1099"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4881310924.html", "lon": "-122.4148", "price": "3200", "idnum": "4881310924", "bed": "1", "bath": "1", "lat": "37.75986", "img_url": "http://images.craigslist.org/00K0K_k960Y5EP2fL_600x450.jpg", "sqft": "517"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4878120101.html", "lon": "-122.4148", "price": "1895", "idnum": "4878120101", "bed": "0", "bath": "1", "lat": "37.75986", "img_url": "http://images.craigslist.org/00p0p_4wFFuuWnNen_600x450.jpg", "sqft": "411"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4866188434.html", "lon": "-122.423922", "price": "8300", "idnum": "4866188434", "bed": "4", "bath": "5", "lat": "37.762309", "img_url": "http://images.craigslist.org/00j0j_fz1eH2QJCuc_600x450.jpg", "sqft": "1800"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4881084381.html", "lon": "-122.4148", "price": "4800", "idnum": "4881084381", "bed": "3", "bath": "5", "lat": "37.75986", "img_url": "http://images.craigslist.org/01717_7un5yH6hTR5_600x450.jpg", "sqft": "1200"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4881059984.html", "lon": "-122.414017", "price": "3100", "idnum": "4881059984", "bed": "2", "bath": "1", "lat": "37.751819", "img_url": "http://images.craigslist.org/00p0p_iEwUB4s03Mx_600x450.jpg", "sqft": "950"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4877854972.html", "lon": "-122.418748", "price": "5799", "idnum": "4877854972", "bed": "2", "bath": "2", "lat": "37.755437", "img_url": "http://images.craigslist.org/00j0j_7ou191k0vhQ_600x450.jpg", "sqft": "1074"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4840296845.html", "lon": "-122.422846", "price": "4295", "idnum": "4840296845", "bed": "2", "bath": "1", "lat": "37.764788", "img_url": "http://images.craigslist.org/00A0A_1SIqf1WTnlQ_600x450.jpg", "sqft": "800"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4877857117.html", "lon": "-122.418975", "price": "5999", "idnum": "4877857117", "bed": "2", "bath": "2", "lat": "37.757818", "img_url": "http://images.craigslist.org/00101_4qnW3eWbPFs_600x450.jpg", "sqft": "1104"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4873041669.html", "lon": "-122.423402", "price": "3900", "idnum": "4873041669", "bed": "2", "bath": "1", "lat": "37.742288", "img_url": "http://images.craigslist.org/00X0X_lvuKcIchM7W_600x450.jpg", "sqft": "930"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4843165349.html", "lon": "-122.423922", "price": "8300", "idnum": "4843165349", "bed": "4", "bath": "5", "lat": "37.762309", "img_url": "http://images.craigslist.org/00j0j_fz1eH2QJCuc_600x450.jpg", "sqft": "1800"}, {"url": "http://sfbay.craigslist.org/pen/apa/4870060393.html", "lon": "-122.4158", "price": "5950", "idnum": "4870060393", "bed": "4", "bath": "3", "lat": "37.74299", "img_url": "http://images.craigslist.org/00909_bYnnkqq4SJe_600x450.jpg", "sqft": "2800"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4877418290.html", "lon": "-122.41881", "price": "3695", "idnum": "4877418290", "bed": "1", "bath": "1", "lat": "37.756089", "img_url": "http://images.craigslist.org/00808_kWPTypt5dRC_600x450.jpg", "sqft": "725"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4880801031.html", "lon": "-122.421272", "price": "2995", "idnum": "4880801031", "bed": "0", "bath": "1", "lat": "37.758499", "img_url": "http://images.craigslist.org/00h0h_1GeXvHGgqhs_600x450.jpg", "sqft": "443"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4876366576.html", "lon": "-122.422669", "price": "4350", "idnum": "4876366576", "bed": "3", "bath": "1", "lat": "37.743942", "img_url": "http://images.craigslist.org/00Z0Z_1bMvXw1DD7f_600x450.jpg", "sqft": "1200"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4880603821.html", "lon": "-122.420847", "price": "3500", "idnum": "4880603821", "bed": "1", "bath": "5", "lat": "37.763489", "img_url": "http://images.craigslist.org/00o0o_5ri4oDgWK4P_600x450.jpg", "sqft": "950"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4864366457.html", "lon": "-122.414183", "price": "9500", "idnum": "4864366457", "bed": "4", "bath": "5", "lat": "37.753546", "img_url": "http://images.craigslist.org/00101_5NRMwHlyPlP_600x450.jpg", "sqft": "1800"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4870351601.html", "lon": "-122.414186", "price": "9500", "idnum": "4870351601", "bed": "3", "bath": "5", "lat": "37.753579", "img_url": "http://images.craigslist.org/00303_lA1U7jhuFSV_600x450.jpg", "sqft": "1700"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4850182859.html", "lon": "-122.4148", "price": "2025", "idnum": "4850182859", "bed": "0", "bath": "1", "lat": "37.75986", "img_url": "http://images.craigslist.org/00e0e_bDxjcUnNLkm_600x450.jpg", "sqft": "350"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4880275754.html", "lon": "-122.4148", "price": "3200", "idnum": "4880275754", "bed": "1", "bath": "1", "lat": "37.75986", "img_url": "http://images.craigslist.org/01616_3IOWLgnCdqR_600x450.jpg", "sqft": "750"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4880222670.html", "lon": "-122.417812", "price": "3480", "idnum": "4880222670", "bed": "1", "bath": "5", "lat": "37.757101", "img_url": "http://images.craigslist.org/00v0v_k9hQJRsQJeR_600x450.jpg", "sqft": "900"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4866035263.html", "lon": "-122.41969", "price": "5250", "idnum": "4866035263", "bed": "3", "bath": "2", "lat": "37.76506", "img_url": "http://images.craigslist.org/00r0r_9IoTNqAgbOV_600x450.jpg", "sqft": "1725"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4876066128.html", "lon": "-122.423314", "price": "4375", "idnum": "4876066128", "bed": "3", "bath": "1", "lat": "37.74246", "img_url": "http://images.craigslist.org/00l0l_2sMKi33Bnh8_600x450.jpg", "sqft": "1200"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4880127040.html", "lon": "-122.425268", "price": "3925", "idnum": "4880127040", "bed": "1", "bath": "1", "lat": "37.762682", "img_url": "http://images.craigslist.org/00P0P_3JBGDKUNz1i_600x450.jpg", "sqft": "721"}, {"url": "http://sfbay.craigslist.org/sfc/apa/4880121597.html", "lon": "-122.425268", "price": "4900", "idnum": "4880121597", "bed": "2", "bath": "2", "lat": "37.762682", "img_url": "http://images.craigslist.org/00w0w_ajl9Cbe4J7Y_600x450.jpg", "sqft": "1099"}]
+				</script>
+				<script type="text/javascript">
+				var createMarkerClickListener = function(map, marker, poi) {
+				    return function() {
+				        var checkbox;
+				        checkbox = '<input type="checkbox" id="info-window-vis-checkbox" name="likes"/>';
+				        var ppb = parseFloat(poi['price']) / parseInt(poi['bed'])
+				        var shortContent = '<div id="info-window-content">'+
+				        '<form action="/users/add_like" method="post">' +
+				        '<h4>Listing #' + poi["idnum"] + '</h4>' +
+				        '<h5 class="info-window-deets">Price Per Bedroom: $' + 
+				        ppb.toString() + '</h5>' +
+				        '<h5 class="info-window-deets">Beds: ' + 
+				        poi["bed"] + '</h5>' +
+				        '<h5 class="info-window-deets">Baths: ' + 
+				        poi["bath"] + '</h5>' +
+				        '<h5 class="info-window-deets">Square Feet: ' +
+				        poi["sqft"] + '</h5>' +
+				        checkbox + 
+				        '<span id="info-window-vis-text">I&#39d live here!</span> ' +
+				        '<button type="submit" class="btn btn-primary btn-sm info-window">' +
+				        'Submit</button>' +
+				        '</form>' +
+				        '</div>';
+				        infoWindow.setContent(shortContent);
+				        map.panTo(marker.getPosition());
+				        google.maps.event.addListener(infoWindow, 'domready', function() {
+				                infoWindow.setContent(shortContent);
+				                map.panTo(marker.getPosition())
+				            });
+				    infoWindow.open(map, marker);
+				    }
+				            
+				};
+				    var mapOptions = {
+				      center: { lat: 37.7833, lng: -122.4167},
+				      zoom: 11
+				    };
+				    var map = new google.maps.Map(document.getElementById('map-canvas'),
+				        mapOptions);
+				    var markers = [];
+				    var infoWindow = new google.maps.InfoWindow({maxWidth: 300});
+				    for (var i = 0; i < apts.length; i++) {
+				        var marker = new google.maps.Marker({
+				            position: new google.maps.LatLng(apts[i]["lat"], apts[i]["lon"]),
+				            map: map,
+				            title: apts[i]["idnum"]
+				        });
+				        marker.set("id", "marker_" + apts[i]["idnum"])
+				        markers.push(marker)
+				        google.maps.event.addListener(marker, 'click', createMarkerClickListener(map, marker, apts[i]));
+				    }
+				</script>
+			</div>
+			<div>
+				<table class="table" >
+			    <% for (var i in users) { %>
+				    <tr>
+				    	<div class="row">
+				    		<div class="col-md-3">
+				    			<a href="profile/:id">
+				    				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				    				  <ol class="carousel-indicators">
+				    					<li data-target = "#mycarousel" data-slide-to = "0" class = "active"></li>
+				    					<li data-target = "#mycarousel" data-slide-to = "1"></li>
+				    				  </ol>
+				    				  <div class="carousel-inner">
+				    				    <div class="item active">
+				    				      <img src="http://www.drroyspencer.com/wp-content/uploads/Kim-Jung-Un.jpg" class="img-circle" id="list-img">
+				    				    </div>
+				    				  	<div class="item">
+				    				    	<img src="http://img2.rnkr-static.com/list_img/12051/852051/C300/pictures-of-kim-jong-un-looking-at-things.jpg" alt="Third slide" class="img-circle" id="list-img">
+				    				  	</div>
+				    				   </div>
+				    				</div>
+				    			</a>
+				    		</div>
+				    		<div class="col-md-8">
+				    			<div id="list_info">
+				    				<h5 class="strong">Name: John</h5></br>
+				    				<h5 class="strong"> <%= users[i].email_address %></h5></br>
+				    				<p>Location: <%= users[i].location %> </p></br>
+				    				<p>Birthday: Jan 1, 2015</p></br>
+				    				<p>Budget: <%= users[i].budget %></p></br>
+				    			</div>
+				    		</div>
+				    	</div>
+				    </tr></br>
+			    <% } %>	
+				</table>
+			</div>
+		</div>
+		</div>
+  </body>
+</html>
