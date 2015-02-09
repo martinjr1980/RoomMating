@@ -9,6 +9,7 @@ var UserSchema = new mongoose.Schema({
   consc: Number,
   excite: Number,
   self: Number,
+  url: String,
   created_at: Date
 });
 
